@@ -206,12 +206,16 @@
     float: right;
   } */
 
-  .nav .nav-item + nav-item {
+  .nav {
     display: flex;
     margin: 0;
     padding: 0;
     list-style: none;
     text-align: center;
+  }
+
+  .nav-item + .nav-item {
+    margin: var(--nav-item-margin);
   }
 
   .nav .nav-item {
@@ -220,7 +224,6 @@
     font-size: var(--nav-item-font-size);
     letter-spacing: var(--nav-item-letter-spacing);
     /* display: var(--nav-item-display); */
-    margin: var(--nav-item-margin);
   }
 
   .nav .nav-link {
