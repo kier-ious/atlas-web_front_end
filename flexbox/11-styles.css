@@ -552,7 +552,7 @@
     background-position: 50% 0;
   }
 
-  .hero-aritcle::before {
+  .hero-article::before {
     content: "";
     background: rgba(0, 0, 0, 0.8);
     position: absolute;
