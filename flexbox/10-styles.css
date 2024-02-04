@@ -371,14 +371,14 @@
     margin-top: -8.5rem;
   }
 
-.section-hero .section-body {
-  padding: 10rem 4rem;
-}
+  .section-hero .section-body {
+    padding: 10rem 4rem;
+  }
 
-.section-hero .section-category {
-  color: color-white;
-  text-transform: uppercase;
-}
+  .section-hero .section-category {
+    --color-white: #ffffff;
+    text-transform: uppercase;
+  }
 
   .hero-homepage {
     background-position: 75% 0;
