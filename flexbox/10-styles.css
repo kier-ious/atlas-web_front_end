@@ -375,8 +375,8 @@
     padding: 10rem 4rem;
   }
 
-  .section-hero .section-category * {
-    --button-color: var(--color-white);
+  .section-hero .section-category {
+    --color-white: #ffffff;
     text-transform: uppercase;
   }
 
