@@ -24,6 +24,7 @@
     --color-dark-grey: #353535;
 
     --text-color: var(--color-black);
+    --text-color: var(--color-white);
 
     --font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-family-title: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -375,8 +376,8 @@
     padding: 10rem 4rem;
   }
 
-  .section-hero .section-category {
-    --button-color: var(--color-white);
+  .section-hero .section-category * {
+    color: var(--text-color);
     text-transform: uppercase;
   }
 
