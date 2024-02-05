@@ -1,0 +1,11 @@
+// Nested classes that assigns values
+$text-color: #3D3D3D;
+$text-color: #FF0000;
+
+body {
+  color: #3D3D3D;
+
+  .red {
+    color: #FF0000;
+  }
+}
