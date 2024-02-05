@@ -1,0 +1,11 @@
+// Nested declarations for text colors to buttons
+$text-color: #FF0000;
+$text-color: #00FF00;
+
+button {
+  color: #FF0000;
+
+  &:hover {
+    color: #00FF00;
+  }
+}
