@@ -1,0 +1,6 @@
+// CReating an H* tag with font sizes using @for statements
+@for $i from 1 through 5 {
+  h#{$i} {
+    font-size: #{$i}px;
+  }
+}
