@@ -1,12 +1,12 @@
 // Applying font sizes to body tags
 body {
   font-size: 14px;
+}
 
-  h1 {
-    font-size: 16px;
+body h1 {
+  font-size: 16px;
 
-    &:smaller {
-      font-size: 12px;
-    }
+body &:smaller {
+  font-size: 12px;
   }
 }
