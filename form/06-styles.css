@@ -154,9 +154,9 @@
     transition-property: color, background-color;
   }
 
-  .button-primary {
-    color: var(--color-white);
-    background: var(--color-primary);
+  .button-primary:hover {
+    color: var(--color-primary);
+    background: var(--color-white);
   }
 
   /* Helpers
