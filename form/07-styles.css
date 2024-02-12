@@ -846,7 +846,7 @@
     height: 1.5rem;
   }
 
-  .for-search input[type="search"] {
+  .form-search input[type="search"] {
     display: inline-block;
     color: var(--color-white);
     padding-right: 2rem;
