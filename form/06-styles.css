@@ -155,8 +155,8 @@
   }
 
   .button-primary:hover {
-    color: var(--color-white);
-    background: var(--color-primary);
+    color: var(--color-primary);
+    background: var(--color-white);
   }
 
   /* Helpers
