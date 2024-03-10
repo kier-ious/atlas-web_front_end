@@ -15,22 +15,22 @@ function main() {
 
   let paragraph = document.createElement('p');
   paragraph.innerHTML = 'Welcome Holberton!';
-  document.body.appendChild(paragraph);
+  document.body.append(paragraph);
 
   let spookyButton = document.createElement('button');
   spookyButton.innerHTML = 'Spooky';
   spookyButton.addEventListener('click', spooky);
-  document.body.appendChild(spookyButton);
+  document.body.append(spookyButton);
 
   let darkModeButton = document.createElement('button');
   darkModeButton.innerHTML = 'Dark Mode';
   darkModeButton.addEventListener('click', dark);
-  document.body.appendChild(darkModeButton);
+  document.body.append(darkModeButton);
 
   let screamModeButton = document.createElement('button');
   screamModeButton.innerHTML = 'Scream Mode';
   screamModeButton.addEventListener('click', scream);
-  document.body.appendChild(screamModeButton);
+  document.body.append(screamModeButton);
 }
 
 main();
