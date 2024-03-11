@@ -37,20 +37,7 @@
               table.append(thead, tbody);
               $('body').append(table);
             }
-
-              function replaceFamilyTree() {
-                var tbody = $('tbody');
-                tbody.html('');
-
-                var newFam = $('<tr>').append(
-                    $('<td>').text('Gerard'),
-                      $('<td>').text('Bonissa'),
-                );
-
-                tbody.append(newFam);
-              }
                 createFamilyTree();
-                replaceFamilyTree();
           });
         </script>
     </head>
