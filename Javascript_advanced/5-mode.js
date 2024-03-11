@@ -15,7 +15,7 @@ function main() {
 
   let paragraph = document.createElement('p');
   paragraph.innerHTML = 'Welcome Holberton!';
-  document.body.append(paragraph);
+  document.body.appendChild(paragraph);
 
   let spookyButton = document.createElement('button');
   spookyButton.innerHTML = 'Spooky';
