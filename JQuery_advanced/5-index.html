@@ -31,8 +31,8 @@
 
             function addNewMember(firstName, lastName) {
               var newRow = $('<tr>').append(
-                $('<td>').text('firstName'),
-                $('<td>').text('lastName'),
+                $('<td>').text(firstName),
+                $('<td>').text(lastName),
                 $('<td>').text('(x)').addClass('remove-cell').click(function() {
                   $(this).closest('tr').remove();
                 })
