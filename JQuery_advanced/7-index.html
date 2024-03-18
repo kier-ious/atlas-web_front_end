@@ -22,26 +22,26 @@
               });
             }
 
-            function addNewArticle(id, title, snippet) {
-              var listItem = $('<li>').append(
-                $('<p>').append(
-                  $('<span>').text('ID - '),
-                  $('<b>').text(title)
-                ),
-                $('<p>').html(snippet)
-              );
-              $('ul').append(listItem);
-            }
+              function addNewArticle(id, title, snippet) {
+                var listItem = $('<li>').append(
+                  $('<p>').append(
+                    $('<span>').text('ID - '),
+                    $('<b>').text(title)
+                  ),
+                  $('<p>').html(snippet)
+                );
+                $('ul').append(listItem);
+              }
 
-            function queryWikipedia(search) {
-              var data = {
-                action: 'query',
-                list: 'search',
-                srsearch: search,
-                format: 'json',
-                origin: '*',
-                utf8: 1
-              };
+              function queryWikipedia(search) {
+                var data = {
+                  action: 'query',
+                  list: 'search',
+                  srsearch: search,
+                  format: 'json',
+                  origin: '*',
+                  utf8: 1
+                };
 
               $.ajax({
                 url: 'https://en.wikipedia.org/w/api.php',
