@@ -10,9 +10,23 @@ var expirationDate = new Date(currentDate.getTime() + (10 * 24 * 60 * 60 * 1000)
 }
 
 function showCookies() {
+  var email = getCookie('email');
+  var firstname = getCookie('firstname');
+
   var cookiesParagraph = document.createElement('p');
-  var cookiesText = 'Cookies: ' + document.cookie;
-  cookiesParagraph.innerhitml = cookiesText;
+  cookiesParagraph.textContent = `Email: ${email} - Firstname: ${firstname}`;
   document.body.appendChild(cookiesParagraph);
-    console.log("Cookies:", document.cookie);
+}
+
+function getCookie(name) {
+  const cookieName = `${name}=`;
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  for (let i = 0; i < cookieArray.length; i++) {
+    const cookie = cookieArray[i].trim();
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+  return '';
 }
