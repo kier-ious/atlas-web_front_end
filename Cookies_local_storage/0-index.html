@@ -15,6 +15,22 @@
       <h2>Show the cookies</h2>
       <button onclick="showCookies()">Show the cookies</button>
 
-    <script src="src/index.js" async defer></script>
+    <script>
+
+      function setCookies() {
+        var firstnameValue = document.getElementById('firstname').value;
+        var emailValue = document.getElementById('email').value;
+
+        document.cookie = 'firstname=' + firstnameValue;
+        document.cookie = 'email=' + emailValue;
+      }
+
+      function showCookies() {
+        var cookiesParagraph = document.createElement('p');
+        var cookiesText = 'Cookies: ' + document.cookies;
+        cookiesParagraph.innerHTML = cookiesText;
+        document.body.appendChild(cookiesParagraph);
+      }
+    </script>
   </body>
 </html>
