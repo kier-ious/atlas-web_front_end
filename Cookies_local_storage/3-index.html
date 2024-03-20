@@ -18,6 +18,78 @@
       <input type="text" id="email">
       <button onclick="setCookies()">Log me in</button>
 
-    <script src="src/index.js" async defer></script>
+    <script>
+      function setCookies() {
+        var firstnameValue = document.getElementById('firstname').value;
+        var emailValue = document.getElementById('email').value;
+
+        var currentDate = new Date();
+        var expirationDate = new Date(currentDate.getTime() + (10 * 24 * 60 * 60 * 1000));
+
+        document.cookie(`firstname=${firstnameValue}`, { expires: expirationDate, path: '/'});
+        document.cookie(`email=${emailValue}`, { expires: expirationDate, path: '/'});
+
+        showWelcomeMessageOrForm();
+      }
+
+      function deleteCookiesAndShowForm() {
+        Cookies.remove('firstname', { path: '/'});
+        Cookies.remove('email', { path: '/'});
+        showForm();
+      }
+
+          function showForm() {
+            hideWelcomeMessage();
+            document.getElementById('loginForm').style.display = 'block';
+          }
+
+          function hideForm() {
+            document.getElementById('loginForm').style.display = 'none';
+          }
+
+      function showWelcomeMessageOrForm() {
+        var firstname = getCookie('firstname');
+        if (firstname) {
+          welcomeMessage = document.createElement('h1');
+          welcomeMessage.textContent = `Welcome ${firstname} `;
+          var logoutLink = document.createElement('a');
+          logoutLink.textContent = '(logout)';
+          logoutLink.style.fontStyle = 'italic';
+          logoutLink.style.fontWeight = 'normal';
+          logoutLink.style.marginLeft = '10px';
+          logoutLink.href = '#';
+          logoutLink.onclick = function() {
+            deleteCookiesAndShowForm();
+            hideWelcomeMessage();
+            return false;
+          };
+          welcomeMessage.appendChild(logoutLink);
+        } else {
+          showForm();
+        }
+        document.body.innerHTML = '';
+        document.body.appendChild(welcomeMessage);
+      }
+
+      function hideWelcomeMessage() {
+        var welcomeMessage = document.querySelector('h1');
+        if (welcomeMessage) {
+          welcomeMessage.remove();
+        }
+      }
+
+      function getCookie(name) {
+        const cookieName = `${name}=`;
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for (let i = 0; i < cookieArray.length; i++) {
+          const cookie = cookieArray[i].trim();
+          if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+          }
+        }
+        return '';
+      }
+    </script>
   </body>
 </html>

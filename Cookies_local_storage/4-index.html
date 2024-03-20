@@ -5,11 +5,6 @@
     <title>Task 4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/src/js.cookie.min.js"></script>
-    <style>
-      #loginForm {
-        display: none;
-      }
-    </style>
   </head>
   <body>
     <h1>Login to the website</h1>
@@ -19,6 +14,69 @@
       <input type="text" id="email">
       <button id="loginButton">Log me in</button>
 
-    <script src="src/index.js" async defer></script>
+    <script>
+      function setCookiesAndShowWelcomeMessage() {
+        var firstnameValue = document.getElementById('firstname').value;
+        var emailValue = document.getElementById('email').value;
+
+        var currentDate = new Date();
+        var expirationDate = new Date(currentDate.getTime() + (10 * 24 * 60 * 60 * 1000));
+
+        Cookies.remove('firstname', { path: '/'});
+        Cookies.remove('email', { path: '/'});
+
+
+        Cookies.set(`firstname=${firstnameValue}`, { expires: expirationDate, path: '/'});
+        Cookies.set(`email=${emailValue}`, { expires: expirationDate, path: '/'});
+
+        showWelcomeMessageOrForm();
+        }
+
+        function deleteCookiesAndShowForm() {
+          Cookies.remove('firstname', { path: '/'});
+          Cookies.remove('email', { path: '/'});
+          showForm();
+        }
+
+          function showForm() {
+            hideWelcomeMessage();
+            document.getElementById('loginForm').style.display = 'block';
+          }
+
+          function hideForm() {
+            document.getElementById('loginForm').style.display = 'none';
+          }
+
+      function showWelcomeMessageOrForm() {
+        var firstname = getCookie('firstname');
+        if (firstname) {
+          welcomeMessage = document.createElement('h1');
+          welcomeMessage.textContent = `Welcome ${firstname} `;
+          var logoutLink = document.createElement('a');
+          logoutLink.textContent = '(logout)';
+          logoutLink.style.fontStyle = 'italic';
+          logoutLink.style.fontWeight = 'normal';
+          logoutLink.style.marginLeft = '10px';
+          logoutLink.href = '#';
+          logoutLink.onclick = function() {
+            deleteCookiesAndShowForm();
+            hideWelcomeMessage();
+            return false;
+          };
+          welcomeMessage.appendChild(logoutLink);
+        } else {
+          showForm();
+        }
+        document.body.innerHTML = '';
+        document.body.appendChild(welcomeMessage);
+      }
+
+      function hideWelcomeMessage() {
+        var welcomeMessage = document.querySelector('h1');
+        if (welcomeMessage) {
+          welcomeMessage.remove();
+        }
+      }
+    </script>
   </body>
 </html>

@@ -1,11 +1,51 @@
 // fixed the onlick attr to eventListeners
 document.addEventListener('DOMContentLoaded', function() {
-  var loginButton = document.getElementById('loginButton');
+  if (!isLocalStorageAvailable()) {
+    alert("Sorry, your browser does not support Web storage. Try again with a better one");
+  } else {
+    createStore();
+    displayCart();
+  }
+});
 
-  loginButton.addEventListener('click', function() {
-    setCookiesAndShowWelcomeMessage();
-  })
-})
+function isLocalStorageAvailable() {
+  try {
+    localStorage.setItem('test', 'test');
+    localStorage.removeItem('test');
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+function addItemToCart(item) {
+  localStorage.setTime(item, true);
+  displayCart();
+}
+
+function createStore() {
+  const availableItemsDiv = document.getElementById('availableItems');
+  const ul = document.createElement('ul');
+  availableItems.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    li.addEventListener('click', function() {
+      addItemToCart(item);
+    });
+    ul.appendChild(li);
+  });
+  availableItemsDiv.appendChild(ul);
+}
+
+function displayCart() {
+  const cartItemsCount = Object.keys(localStorage).length;
+  const message = cartItemsCount === 0 ? "" : `You previously had ${cartItemsCount} items in your cart`;
+  const cartMessage = document.createElement('p');
+  cartMessage.textContent = message;
+  document.body.appendChild(cartMessage);
+}
 
 function setCookiesAndShowWelcomeMessage() {
   var firstnameValue = document.getElementById('firstname').value;
@@ -23,28 +63,6 @@ function setCookiesAndShowWelcomeMessage() {
 
   showWelcomeMessageOrForm();
 }
-
-function showCookies() {
-  var email = Cookies.get('email');
-  var firstname = Cookies.get('firstname');
-
-  var cookiesParagraph = document.createElement('p');
-  cookiesParagraph.textContent = `Email: ${email} - Firstname: ${firstname}`;
-  document.body.appendChild(cookiesParagraph);
-}
-
-// function getCookie(name) {
-//   const cookieName = `${name}=`;
-//   const decodedCookie = decodeURIComponent(document.cookie);
-//   const cookieArray = decodedCookie.split(';');
-//   for (let i = 0; i < cookieArray.length; i++) {
-//     const cookie = cookieArray[i].trim();
-//     if (cookie.indexOf(cookieName) === 0) {
-//       return cookie.substring(cookieName.length, cookie.length);
-//     }
-//   }
-//   return '';
-// }
 
 function deleteCookiesAndShowForm() {
   Cookies.remove('firstname', { path: '/'});
